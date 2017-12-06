@@ -56,7 +56,7 @@ class zodiac {
           break;
       }
     } catch(InputMismatchException e){
-      System.out.println("Error in the input...please enter your year of birth:");
+        System.out.println("Error in the input...please enter your year of birth:");
       }
   }
 }
