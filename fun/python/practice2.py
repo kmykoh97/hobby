@@ -39,7 +39,7 @@ class Game:
         self.background.bind('<Configure>',self.resizeFrameOne)
 
         #computer hand
-        self.computerHand=['JS','AH']
+        self.computerHand=['JS','JH']
         #raw_input("Computer hand:").split()
         self.computerCard=[0,0]
 
@@ -683,13 +683,13 @@ def AI(a,b):
         if y[0][0] == y[1][0]:
             if random() < 0.85:
                 return True
-    else: return False
+            else:
+                return False
+        return False
     if y[0][0] == y[1][0] and y[0][0] >= x[1][0] and len(x) >= 3:
         if random() < 0.7:
             return True
     #compare total value
-    print y[0][0],y[1][0]
-    print x[0][0],x[1][0],x[2][0]
     if y[0][0] + y[1][0] >= x[1][0] + x[randint(0,len(x)-1)][0]:
         if random() < 0.6:
             return True
