@@ -676,12 +676,16 @@ class MoneyLabel:
         self.resizeImage(self.width,self.height,0.08)
 
 def AI(a,b):
+    # x is table, y is hand
     # print a,b
     x,y = numberized(b,a)
-    if y[0][0] == y[1][0] and y[0][0] >= x[1][0] and len(x) == 3:
+    if y[0][0] == y[1][0] and len(x) == 0:
         if random() < 0.85:
             return True
-    # compare total value
+    if y[0][0] == y[1][0] and y[0][0] >= x[1][0] and len(x) >= 3:
+        if random() < 0.7:
+            return True
+    #compare total value
     if y[0][0] + y[1][0] >= x[1][0] + x[randint(0,len(x)-1)][0]:
         if random() < 0.6:
             return True
@@ -706,6 +710,7 @@ def AI(a,b):
                 if random() < 0.85:
                     return True
     return False
+
 
 def numberized(tableCard, aiCard):
         number = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
