@@ -54,7 +54,7 @@ def progress(card,number,shape):
         return Card
 
 def main():
-        if AI([['K','S'],['K','D']], [['3','C'],['A','H'],['Q','D']]):
+        if AI([['J','S'],['K','D']], [['3','C'],['A','H'],['6','D']]):
             print 'a'
         else:
             print "b"
