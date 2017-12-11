@@ -4,9 +4,13 @@ def AI(a,b):
     # x is table, y is hand
     # print a,b
     x,y = numberized(b,a)
-    if y[0][0] == y[1][0] and len(x) == 0:
-        if random() < 0.85:
-            return True
+    if len(x) == 0:
+        if y[0][0] == y[1][0]:
+            if random() < 0.85:
+                return True
+            else:
+                return False
+        return False
     if y[0][0] == y[1][0] and y[0][0] >= x[1][0] and len(x) >= 3:
         if random() < 0.7:
             return True
