@@ -8,10 +8,11 @@ def AI(a,b):
         if y[0][0] == y[1][0]:
             if random() < 0.85:
                 return True
-            else:
-                return False
+            else: return False
+        elif random() < 0.75:
+            return True
         return False
-    if y[0][0] == y[1][0] and y[0][0] >= x[1][0] and len(x) >= 3:
+    if y[0][0] == y[1][0] and y[0][0] >= x[1][0]: #sort it so that
         if random() < 0.7:
             return True
     #compare total value
