@@ -36,9 +36,14 @@ def AI(a,b):
     # compare bot and table
     for i in range(len(y)):
         for j in range(len(x)):
-            if y[i][0] == x[j][0] and y[i][0] >= x[randint(0,len(x)-1)][0]:
-                if random() < 0.85:
+            if y[i][0] >= x[j][0] and y[i][0] >= x[randint(0,len(x)-1)][0]:
+                if random() < 0.79:
                     return True
+    # make sure ai will not fold card during last few rounds
+    if len(x) == 4:
+        if random() < 0.9:
+            return True
+    elif len(x) == 5: return True
     return False
 
 
