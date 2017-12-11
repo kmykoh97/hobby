@@ -44,7 +44,10 @@ def AI(a,b):
         if random() < 0.9:
             return True
     elif len(x) == 5: return True
-    return False
+    # final condition to satisfy cards deck without above conditions
+    if len(x) != 0:
+        if random() < 0.59: return True
+        else: return False
 
 
 def numberized(tableCard, aiCard):
