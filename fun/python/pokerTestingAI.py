@@ -76,6 +76,7 @@ def AI(x, y):
             elif i+4 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3] and numberList[i+3]+1 == numberList[i+4]: return True
         # consider when no above condition satisfied:
         if randint(0, 2) == 0: return True
+        return False
     # condition when cards are fully displayed on table
     elif len(y) == 5:
         return True
