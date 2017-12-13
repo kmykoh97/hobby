@@ -53,7 +53,7 @@ def AI(x, y):
     # condition when no cards on table yet
     if len(y) == 0:
         if x[0][0] == x[1][0]: return True
-        elif x[randint(0,1)][1] > 10: return True
+        elif x[randint(0,1)][0] > 10: return True
         elif random() < 0.70: return True
         return False
     # condition when cards on table not yet completed
