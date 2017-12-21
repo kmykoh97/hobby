@@ -82,7 +82,7 @@ def AI(x, y):
         return True
 
 def main():
-    if AI([['K','S'],['2','D']], [['3','C'],['K','H'],['6','D']]):
+    if AI([['A','H'],['7','H']], [['J','D'],['4','D'],['2','S'],['8','H'],['9','D']]):
         print 'a'
     else: print "b"
 
