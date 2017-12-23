@@ -1,11 +1,11 @@
 class myClass {
 
-  static int sum(int a, int b) {
-    return a + b;
+  static double square(int a, int b) {
+    return Math.pow(a, b);
   }
 
-  public static void main(String[ ] args) {
-    int x = sum(2, 5);
-    System.out.printIn(x);
+  public static void main(String[] args) {
+    double x = square(2, 5);
+    System.out.println(x);
   }
 }
