@@ -28,7 +28,7 @@ class quadraticCubic {
     // case 0: linear equation
     // case 1: quadratic equation
     // case 2: cubic equation
-    System.out.println("function to determine if user's input is quadratic or cubic");
+    // System.out.println("function to determine if user's input is quadratic or cubic");
     if(a == 0) {
       return 0;
     } else if(d == 0) {
@@ -44,16 +44,15 @@ class quadraticCubic {
     int b = 2;
     int c = 1;
     int d = 0;
-    switch(determineSquareCubic) {
+    switch(determineSquareCubic(a, b, c, d)) {
       case 0:
-      System.out.println('Linear Equation!');
+        System.out.println("Linear Equation!");
       case 1:
-      int result = quadratic(a, b, c);
-      System.out.println(result);
+        double result1 = quadratic(a, b, c);
+        System.out.println(result1);
       case 2:
-      int result = cubic(a, b, c, d);
-      System.out.println(result);
+        double result2 = cubic(a, b, c, d);
+        System.out.println(result2);
     }
   }
-
 }
