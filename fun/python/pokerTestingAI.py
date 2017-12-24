@@ -9,7 +9,7 @@ def numberized(tableCard, aiCard):
         aCard = progress(aiCard, number, shape)
         return tCard, aCard
 
-# function to determine whether to follow
+# 2 functions to determine whether to follow
 def evaluator1(x):
     if x[0][0] == x[1][0]: return True
     elif x[randint(0,1)][0] > 10:
@@ -18,18 +18,15 @@ def evaluator1(x):
         if randint(0,1) == 0: return False
     elif x[0][1] == x[1][1]:
         if random() < 0.8: return True
+    elif randint(1,3) == 2: return True
 
 def evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
-    # x is ai card, y is table card
-    y, x = numberized(y, x)
-    numberList, shapeList = groupNS(y, x)
-    numberCount, shapeCount = similarCount(numberList, shapeList)
     # consider value of cards:
     if y[0][0] >= x[randint(0,len(x)-1)][0]:
-        if random() < 0.7: return True
+        if random() > 0.25: return evaluator1(x)
     # consider total value of cards:
     if y[0][0] + y[1][0] >= x[1][0] + x[randint(0,len(x)-1)][0]:
-        if random() < 0.7: return True
+        if random() < 0.7: return evaluator1(x)
     # consider duplicated shape of cards:
     if shapeCount == 3:
         if random() < 0.65: return True
@@ -88,7 +85,8 @@ def AI(x, y):
         return False
     # condition when cards on table not yet completed
     elif len(y) == 3 or len(y) == 4:
-        if evaluator2(x, y, numberList, shapeList, numberCount, shapeCount)
+        if evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
+            return True
         # consider when no above condition satisfied:
         if randint(0, 2) == 0: return evaluator1(x)
         return False
