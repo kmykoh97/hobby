@@ -9,6 +9,38 @@ def numberized(tableCard, aiCard):
         aCard = progress(aiCard, number, shape)
         return tCard, aCard
 
+# function to determine whether to follow
+def evaluator1(x):
+    if x[0][0] == x[1][0]: return True
+    elif x[randint(0,1)][0] > 10:
+        if random() < 0.9: return True
+    elif x[0][0] + x[1][0] >= 15:
+        if randint(0,1) == 0: return False
+    elif x[0][1] == x[1][1]:
+        if random() < 0.8: return True
+
+def evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
+    # x is ai card, y is table card
+    y, x = numberized(y, x)
+    numberList, shapeList = groupNS(y, x)
+    numberCount, shapeCount = similarCount(numberList, shapeList)
+    # consider value of cards:
+    if y[0][0] >= x[randint(0,len(x)-1)][0]:
+        if random() < 0.7: return True
+    # consider total value of cards:
+    if y[0][0] + y[1][0] >= x[1][0] + x[randint(0,len(x)-1)][0]:
+        if random() < 0.7: return True
+    # consider duplicated shape of cards:
+    if shapeCount == 3:
+        if random() < 0.65: return True
+    elif shapeCount > 3: return True
+    # consider duplicated or progression number of cards:
+    if numberCount >= 3: return True
+    for i in range(len(numberList)):
+        if i+3 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3]:
+            if random() < 0.65: return True
+        elif i+4 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3] and numberList[i+3]+1 == numberList[i+4]: return True
+
 def progress(card, number, shape):
     Card = []
     for a in range(len(card)) :
@@ -44,7 +76,6 @@ def similarCount(number, shape):
             shapecount = temp
     return numcount, shapecount
 
-
 def AI(x, y):
     # x is ai card, y is table card
     y, x = numberized(y, x)
@@ -52,30 +83,14 @@ def AI(x, y):
     numberCount, shapeCount = similarCount(numberList, shapeList)
     # condition when no cards on table yet
     if len(y) == 0:
-        if x[0][0] == x[1][0]: return True
-        elif x[randint(0,1)][0] > 10: return True
-        elif random() < 0.70: return True
+        if evaluator1(x): return True
+        elif random() < 0.65: return True
         return False
     # condition when cards on table not yet completed
     elif len(y) == 3 or len(y) == 4:
-        # consider value of cards:
-        if y[0][0] >= x[randint(0,len(x)-1)][0]:
-            if random() < 0.7: return True
-        # consider total value of cards:
-        if y[0][0] + y[1][0] >= x[1][0] + x[randint(0,len(x)-1)][0]:
-            if random() < 0.7: return True
-        # consider duplicated shape of cards:
-        if shapeCount == 3:
-            if random() < 0.65: return True
-        elif shapeCount > 3: return True
-        # consider duplicated or progression number of cards:
-        if numberCount >= 3: return True
-        for i in range(len(numberList)):
-            if i+3 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3]:
-                if random() < 0.65: return True
-            elif i+4 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3] and numberList[i+3]+1 == numberList[i+4]: return True
+        if evaluator2(x, y, numberList, shapeList, numberCount, shapeCount)
         # consider when no above condition satisfied:
-        if randint(0, 2) == 0: return True
+        if randint(0, 2) == 0: return evaluator1(x)
         return False
     # condition when cards are fully displayed on table
     elif len(y) == 5:
