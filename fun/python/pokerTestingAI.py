@@ -18,7 +18,7 @@ def evaluator1(x):
         if randint(0,1) == 0: return False
     elif x[0][1] == x[1][1]:
         if random() < 0.8: return True
-    elif randint(1,3) == 2: return True
+    return False
 
 def evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
     # consider value of cards:
@@ -37,14 +37,20 @@ def evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
         if i+3 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3]:
             if random() < 0.65: return True
         elif i+4 < len(numberList) and numberList[i]+1 == numberList[i+1] and numberList[i+1]+1 == numberList[i+2] and numberList[i+2]+1 == numberList[i+3] and numberList[i+3]+1 == numberList[i+4]: return True
+    return False
 
 def progress(card, number, shape):
     Card = []
     for a in range(len(card)) :
         for b in range(len(card[a])):
             if b==0:
-                x = number.index(card[a][b])
+                if card[a][b]=='1':
+                    x = number.index('10')
+                else:
+                    x = number.index(card[a][b])
             elif b==1:
+                if card[a][b-1] == '1':
+                    b=2
                 y = shape.index(card[a][b])
         Card.append([x,y])
     return Card
@@ -85,17 +91,19 @@ def AI(x, y):
         return False
     # condition when cards on table not yet completed
     elif len(y) == 3 or len(y) == 4:
+        # consider few cases and give probability using limited recursive algorithm:
         if evaluator2(x, y, numberList, shapeList, numberCount, shapeCount):
             return True
-        # consider when no above condition satisfied:
-        if randint(0, 2) == 0: return evaluator1(x)
+        # consider when no above condition satisfied(recursion):
+        if randint(0, 2) == 0:
+            return evaluator1(x)
+        # all above conditions not met:
         return False
     # condition when cards are fully displayed on table
-    elif len(y) == 5:
-        return True
+    elif len(y) == 5: return True
 
 def main():
-    if AI([['A','H'],['7','H']], [['J','D'],['4','D'],['2','S'],['8','H'],['9','D']]):
+    if AI([['A','D'],['4','H']], [['J','S'],['K','H'],['A','S'],['9','H']]):
         print 'a'
     else: print "b"
 
