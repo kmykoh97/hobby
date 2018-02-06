@@ -1,6 +1,6 @@
-#Black Jack Card Game
-#Created by MyKoh
-#2017-12-2
+# Black Jack Card Game
+# Created by MyKoh
+# 2017-12-2
 
 # A redo of blackjack game using class
 
