@@ -2,6 +2,7 @@
 #Created by MyKoh
 #2017-09-20
 
+# linear way of doing factorial
 print 'This a a program to find factorial'
 def factorial():
     n = input('Please insert a whole number:')
@@ -10,5 +11,17 @@ def factorial():
         x *= i
     print 'Factorial of', n, 'is', x
 
-factorial()
-print 'Have a good day'
+# factorial()
+
+
+# recursive way of doing factorial
+def fac(n):
+    if n == 1:
+        return 1
+    else: return n * fac(n-1)
+
+def main():
+    n = input('Please insert a whole number: ')
+    print fac(n)
+
+main()

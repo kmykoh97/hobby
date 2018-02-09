@@ -5,6 +5,7 @@
 #Input: Integer a, b, c
 #Output: HCF, LCM of a, b, c
 
+# linear way
 def LCM(a,b,c):
     #a, b, c = input('Please insert 3 numbers saparated by ,:')
     truthValue = True
@@ -19,13 +20,13 @@ def LCM(a,b,c):
         while newC < newA:
             newC= c * multipleC
             multipleC += 1
-        
+
         if newA - newB == 0 and newA - newC == 0:
             truthValue = False
 
     print 'LCM is', str(newA)
 
-   #alternative LCM: use lower number in that 3 and add 1 by 1 and if x % y== 0, lcm 
+   #alternative LCM: use lower number in that 3 and add 1 by 1 and if x % y== 0, lcm
    #alternative: 3x for loops
 
 #LCM()
@@ -65,10 +66,20 @@ def HCF(a,b,c):
 #HCF()
 
 #control function
-def main():
+def main1():
     a, b, c = input('Please insert 3 numbers saparated by ,:')
     LCM(a,b,c)
     HCF(a,b,c)
     print 'This code is very complicated. Have fun studying XD'
+
+main1()
+
+# recursive way
+def main():
+
+
+
+def hcf():
+
 
 main()
