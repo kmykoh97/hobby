@@ -72,14 +72,33 @@ def main1():
     HCF(a,b,c)
     print 'This code is very complicated. Have fun studying XD'
 
-main1()
+# main1()
 
 # recursive way
 def main():
+    a, b = input("Please insert 2 numbers for hcf: ")
+    global hcf
+    hcf = hcf(a,b) # for better efficiency
+    print "LCM is:", lcm(a, b)
+    print "HCF is:", hcf
 
+def lcm(a, b):
+    return a * b / hcf
 
+"""
+# second recursive way of finding LCM:
+# this code is very inefficient althought it is recursive. It is even more inefficient than linear
+def lcmForceRecursive(x, y, counter=1):
+    if (counter%x == 0 and counter%y == 0):
+        return counter
+    return lcm(x, y, counter+1)
 
-def hcf():
+print lcmForceRecursive(2, 4)
+"""
 
+def hcf(a, b):
+    if b == 0: return a
+    else:
+        return hcf(b, a%b)
 
 main()
