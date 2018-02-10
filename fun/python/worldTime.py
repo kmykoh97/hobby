@@ -100,5 +100,3 @@ london.timeConversion()
 # hour,minute = time.increment(hour,minute)
 # hour = time.determineDay(hour)
 # time.print_time(hour,minute)
-
-ad
